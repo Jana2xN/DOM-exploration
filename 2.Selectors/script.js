@@ -8,3 +8,10 @@ imgElements.forEach(img => {
         img.style.display = "none";
     }
 });
+const paragraphs = document.querySelectorAll("p");
+paragraphs.forEach(paragraph => {
+    console.log("Paragraph Content: " + paragraph.textContent);
+    if (paragraph.classList.length > 0) {
+        console.log("Class Name: " + paragraph.classList[0]);
+    }
+});

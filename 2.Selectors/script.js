@@ -1,46 +1,36 @@
-// Get all elements with the "important" class
+// Add a title attribute to every element that has the "important" class
 const importantElements = document.querySelectorAll(".important");
-// Loop through each element and add the title attribute
 importantElements.forEach(element => {
     element.setAttribute("title", "This is an important item");
 });
 
-// Select all img tags
+// Select all the img tags and hide them if they don't have the "important" class
 const imgElements = document.querySelectorAll("img");
-// Loop through the img elements
 imgElements.forEach(img => {
-    // Check if the img element does not have the "important" class
     if (!img.classList.contains("important")) {
-        // Set the display property to "none" to hide it
         img.style.display = "none";
     }
 });
 
-// Select all paragraphs
+// Loop through all the paragraphs and display their content in the console
+// If the paragraph has a class, display its classname as well
 const paragraphs = document.querySelectorAll("p");
-// Loop through the paragraphs
 paragraphs.forEach(paragraph => {
-    // Display the paragraph content
     console.log("Paragraph Content: " + paragraph.textContent);
-    // Check if the paragraph has a class
     if (paragraph.classList.length > 0) {
-        // Display the class name
         console.log("Class Name: " + paragraph.classList[0]);
     }
 });
 
-// Function to generate a random color in RGB format
+// Give each paragraph a random text color (different for each one) unless it has a class
 function getRandomColor() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
     return `rgb(${r},${g},${b})`;
 }
-// Loop through the paragraphs
 paragraphs.forEach(paragraph => {
-    // Check if the paragraph has a class
     if (paragraph.classList.length === 0) {
-        // If it doesn't have a class, assign a random text color
         paragraph.style.color = getRandomColor();
     }
 });

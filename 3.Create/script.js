@@ -10,3 +10,15 @@ function getRandomBackgroundColor() {
     const b = Math.floor(Math.random() * 256);
     return `rgb(${r},${g},${b})`;
   }
+
+// Function to determine text color based on background color
+function getTextColor(backgroundColor) {
+    // Split the RGB string and convert to integers
+    const [r, g, b] = backgroundColor.slice(4, -1).split(',').map(Number);
+
+    // Calculate the brightness (luminance)
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+    // Determine text color based on brightness
+    return brightness > 128 ? "black" : "white";
+}

@@ -4,11 +4,7 @@ const getElapsedTime = () => {
   return Number((Date.now() - _initTime) / 1000).toFixed(2) + 's';
 }
 
-const clickOnSquare = (e) => {
-  // Get the color class of the clicked action square
-  const colorClass = e.target.classList[1];
-  console.log(colorClass);
-  
+const clickOnSquare = (colorClass) => {
   // Create a new <div> with the class .displayedsquare and the corresponding color
   const displayedSquare = document.createElement('div');
   displayedSquare.classList.add('displayedsquare', colorClass);
@@ -27,5 +23,30 @@ const clickOnSquare = (e) => {
 
 const actionSquares = document.querySelectorAll('.actionsquare');
 for (let actionSquare of actionSquares) {
-  actionSquare.addEventListener('click', clickOnSquare);
+  actionSquare.addEventListener('click', () => {
+    clickOnSquare(actionSquare.classList[1]);
+  });
 }
+
+// Event listener for keypress on the document body
+document.body.addEventListener('keypress', (e) => {
+  if (e.key === ' ') { // Check for spacebar
+    // Randomly change the background color of the whole page
+    const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+    document.body.style.backgroundColor = randomColor;
+
+    // Log when the spacebar is used
+    console.log('Spacebar pressed');
+    console.log(getElapsedTime());
+  } else if (e.key === 'l') { // Check for 'l' key
+    // Clear the action log (remove all <li> elements)
+    const actionLog = document.querySelector('.action-log');
+    while (actionLog.firstChild) {
+      actionLog.removeChild(actionLog.firstChild);
+    }
+  } else if (e.key === 's') { // Check for 's' key
+    // Clear the generated squares (remove all .displayedsquare elements)
+    const displayedsquareWrapper = document.querySelector('.displayedsquare-wrapper');
+    displayedsquareWrapper.innerHTML = '';
+  }
+});

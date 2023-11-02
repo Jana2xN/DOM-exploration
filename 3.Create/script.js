@@ -22,3 +22,22 @@ function getTextColor(backgroundColor) {
     // Determine text color based on brightness
     return brightness > 128 ? "black" : "white";
 }
+
+// Shuffle the order of learners
+learners.sort(() => Math.random() - 0.5);
+
+// Get the <article> element to append sections
+const article = document.querySelector("article");
+
+// Create and append a <section> for each learner
+learners.forEach(learner => {
+    const section = document.createElement("section");
+    section.style.backgroundColor = getRandomBackgroundColor();
+    section.style.color = getTextColor(section.style.backgroundColor);
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = learner;
+
+    section.appendChild(paragraph);
+    article.appendChild(section);
+});

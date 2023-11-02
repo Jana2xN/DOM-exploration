@@ -14,3 +14,8 @@ const h2Third = thirdSection.querySelector("h2");
 
 secondSection.insertBefore(h2Third, secondSection.firstChild);
 thirdSection.insertBefore(h2Second, thirdSection.firstChild);
+
+// Delete the last section from the DOM
+const main = document.querySelector("main");
+const lastSection = main.lastElementChild;
+main.removeChild(lastSection);

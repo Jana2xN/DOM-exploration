@@ -19,6 +19,12 @@ const clickOnSquare = (colorClass) => {
   const actionItem = document.createElement('li');
   actionItem.textContent = `Action done: ${colorClass} square clicked at ${actionTime}`;
   actionLog.appendChild(actionItem);
+
+  // Add a click event listener to the displayed square
+  displayedSquare.addEventListener('click', () => {
+    // Show an alert with the color of the clicked square
+    alert(`Clicked square color: ${colorClass}`);
+  });
 }
 
 const actionSquares = document.querySelectorAll('.actionsquare');

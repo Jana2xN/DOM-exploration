@@ -59,3 +59,23 @@ passwordConfirmInput.addEventListener('keyup', () => {
     passwordConfirmInput.style.borderColor = ''; // Reset the border color
   }
 });
+
+// Get the select element
+const darkModeSelect = document.getElementById('toggle-darkmode');
+
+// Add a change event listener to the select field
+darkModeSelect.addEventListener('change', () => {
+  const selectedOption = darkModeSelect.value;
+
+  // Check the selected option and toggle dark mode
+  if (selectedOption === 'dark') {
+    // Dark Mode: background is black, text is white
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white';
+  } else {
+    // Light Mode: reset to default styles
+    document.body.style.backgroundColor = '';
+    document.body.style.color = '';
+  }
+});
+

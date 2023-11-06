@@ -77,4 +77,20 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Append the <select> element to the <div>
     div.appendChild(select);
+  
+    // Add an event listener to the <select> to toggle visibility
+    select.addEventListener("change", function () {
+      const selectedOption = select.options[select.selectedIndex].textContent;
+      ul.childNodes.forEach(function (child) {
+        if (selectedOption === "Important Franchises") {
+          if (child.classList.contains("important")) {
+            child.style.visibility = "visible";
+          } else {
+            child.style.visibility = "hidden";
+          }
+        } else {
+          child.style.visibility = "visible";
+        }
+      });
+    });
   });

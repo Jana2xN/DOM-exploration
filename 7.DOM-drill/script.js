@@ -58,4 +58,23 @@ document.addEventListener("DOMContentLoaded", function () {
         ul.insertBefore(clone, ul.firstChild);
       }
     });
+  
+    // Create a new <div> before the list
+    const div = document.createElement("div");
+    ul.parentNode.insertBefore(div, ul);
+  
+    // Create a <select> element and two <option> elements
+    const select = document.createElement("select");
+    const option1 = document.createElement("option");
+    const option2 = document.createElement("option");
+  
+    option1.textContent = "Important Franchises";
+    option2.textContent = "Normal Franchises";
+  
+    // Append the <option> elements to the <select> element
+    select.appendChild(option1);
+    select.appendChild(option2);
+  
+    // Append the <select> element to the <div>
+    div.appendChild(select);
   });
